@@ -54,6 +54,16 @@ const buttons = document.querySelectorAll(".btn");
 buttons.forEach((button, index) =>
     button.addEventListener("click", () => loadAudio(index)));
 
+.my-element {
+  height: 100vh; /* fallback khi trình duyệt không hỗ trợ biến css */
+  height: calc(var(--vh, 1vh) * 100);
+}
+// Trước tiên lấy viewport height và chuyển thành giá trị 1%
+// chạy lại khi window resize
+window.addEventListener('resize', () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
 
 function init() {
     const overlay = document.getElementById("overlay");
